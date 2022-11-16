@@ -7,6 +7,10 @@ edition = "2021"
 
 [dependencies]
 axum = "0.6.0-rc.4"
+base64 = "0.13"
+reqwest = { version = "0.11", default-features = false, features = ["rustls-tls"] }
 rsa = "0.7"
 serde = { version = "1.0", features = ["derive"] }
+sha2 = { version = "0.10", features = ["oid"] }
+time = { version = "0.3", features = ["std", "formatting"] }
 tokio = { version = "1.0", features = ["full"] }
