@@ -1,3 +1,4 @@
+mod actor;
 mod webfinger;
 
 use axum::{
@@ -16,6 +17,7 @@ pub fn app(state: AppState) -> Router<AppState> {
     Router::with_state(state)
         .route("/", get(hello))
         .route("/.well-known/webfinger", get(webfinger::webfinger))
+        .route("/actor", get(actor::actor))
 }
 
 async fn hello() -> impl IntoResponse {
