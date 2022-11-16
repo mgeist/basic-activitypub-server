@@ -2,7 +2,6 @@
 with pkgs; mkShell rec {
     buildInputs = with pkgs; [
         # general dev
-        curl
         git
 
         # rust stuff

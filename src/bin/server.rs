@@ -1,10 +1,13 @@
-use std::net::SocketAddr;
+use std::{env, net::SocketAddr};
 
-use basic_activitypub_server::app;
+use basic_activitypub_server::{app, AppState};
 
 #[tokio::main]
 async fn main() {
-    let app = app();
+    let user = env::var("AP_USER").unwrap();
+    let domain = env::var("AP_DOMAIN").unwrap();
+
+    let app = app(AppState { user, domain });
 
     let address = SocketAddr::from(([0, 0, 0, 0], 8080));
 

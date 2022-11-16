@@ -1,11 +1,21 @@
+mod webfinger;
+
 use axum::{
     response::{Html, IntoResponse},
     routing::get,
     Router,
 };
 
-pub fn app() -> Router {
-    Router::new().route("/", get(hello))
+#[derive(Clone)]
+pub struct AppState {
+    pub user: String,
+    pub domain: String,
+}
+
+pub fn app(state: AppState) -> Router<AppState> {
+    Router::with_state(state)
+        .route("/", get(hello))
+        .route("/.well-known/webfinger", get(webfinger::webfinger))
 }
 
 async fn hello() -> impl IntoResponse {
