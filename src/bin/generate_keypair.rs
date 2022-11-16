@@ -13,9 +13,6 @@ fn main() {
     let public_key = RsaPublicKey::from(&private_key);
 
     // Write the keys to disk as public.pem and private.pem respectively.
-    // Note that we are explicitly using LF line endings here (\n) since we're
-    // going to serve the public key file and Mastodon expects the LF line
-    // endings.
     private_key
         .write_pkcs8_pem_file("private.pem", LineEnding::LF)
         .unwrap();
