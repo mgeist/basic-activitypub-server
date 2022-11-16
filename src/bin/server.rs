@@ -1,6 +1,6 @@
 use std::net::SocketAddr;
 
-use basis_activitypub_server::app;
+use basic_activitypub_server::app;
 
 #[tokio::main]
 async fn main() {
